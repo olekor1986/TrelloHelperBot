@@ -1,5 +1,6 @@
 <?php
 
+use App\Telegram\Telegram;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $telegram = new Telegram;
+    $telegram->request('sendMessage', [
+        'chat_id' => 620175323,
+        'text' => 'OK'
+    ]);
+});
+Route::any('/tg_bot_input', function () {
+    $telegram = new Telegram;
+    $data = $telegram->getData();
+    $telegram->request('sendMessage', [
+        'chat_id' => 620175323,
+        'text' => $data
+    ]);
 });
