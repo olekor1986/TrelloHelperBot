@@ -1,6 +1,7 @@
 <?php
 
 use App\Telegram\Telegram;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,12 +21,6 @@ Route::get('/', function () {
         'chat_id' => 620175323,
         'text' => 'OK'
     ]);
+    dd($telegram);
 });
-Route::any('/tg_bot_input', function () {
-    $telegram = new Telegram;
-    $data = $telegram->getData();
-    $telegram->request('sendMessage', [
-        'chat_id' => 620175323,
-        'text' => $data
-    ]);
-});
+Route::any('tg_bot_input', [\App\Http\Controllers\TelegramController::class, 'getData']);

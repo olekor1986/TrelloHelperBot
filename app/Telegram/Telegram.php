@@ -8,11 +8,6 @@ class Telegram
 
     protected $api_token = '5760643947:AAEEpMT2t8xnf7A_JiI3u_V5u97TuIZHYtk';
 
-    public function getData(){
-        $data = json_decode(file_get_contents('php://input'), true);
-        return $data;
-    }
-
     public function request(string $tgMethodName, array $data) {
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $this->url . $this->api_token .  '/' . $tgMethodName);
