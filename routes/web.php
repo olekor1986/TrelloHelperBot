@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     $telegram = new Telegram;
     $telegram->request('sendMessage', [
@@ -23,4 +23,5 @@ Route::get('/', function () {
     ]);
     dd($telegram);
 });
+*/
 Route::any('tg_bot_input', [\App\Http\Controllers\TelegramController::class, 'getData']);
