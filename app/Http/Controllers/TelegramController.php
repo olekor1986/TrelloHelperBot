@@ -16,7 +16,8 @@ class TelegramController extends Controller
             $inMsg = $request['message'];
             if ($inMsg['text'] = '/start'){
                 $telegramUser = TelegramUser::find($inMsg['from']['id']);
-                if(!isset($telegramUser)){
+                Log::info(print_r($telegramUser, true));
+                if($telegramUser === NULL){
                     $newTelegramUserData['telegram_id'] = $inMsg['from']['id'];
                     $newTelegramUserData['is_bot'] = $inMsg['from']['is_bot'];
                     $newTelegramUserData['first_name'] = $inMsg['from']['first_name'];
@@ -27,16 +28,15 @@ class TelegramController extends Controller
                     $newTelegramUserData['language_code'] = $inMsg['from']['language_code'];
 
                     $newTelegramUser = TelegramUser::create($newTelegramUserData);
-
                     $outMsg = 'Hello ' . $newTelegramUser->first_name . '! ';
 
                     $telegram->request('sendMessage', [
                         'chat_id' => $newTelegramUser->telegram_id,
                         'text' => $outMsg
                     ]);
+
                 } else {
                     $outMsg = 'Hello ' . $telegramUser->first_name . '! ';
-
                     $telegram->request('sendMessage', [
                         'chat_id' => $telegramUser->telegram_id,
                         'text' => $outMsg
