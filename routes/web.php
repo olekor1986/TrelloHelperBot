@@ -14,14 +14,5 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/', function () {
-    $telegram = new Telegram;
-    $telegram->request('sendMessage', [
-        'chat_id' => 620175323,
-        'text' => 'OK'
-    ]);
-    dd($telegram);
-});
-*/
-Route::any('tg_bot_input', [\App\Http\Controllers\TelegramController::class, 'getData']);
+Route::any('webhook', [\App\Http\Controllers\WebhookController::class, 'getTelegramUpdate']);
+Route::any('trello_callback', [\App\Http\Controllers\WebhookController::class, 'getTrelloUpdate']);

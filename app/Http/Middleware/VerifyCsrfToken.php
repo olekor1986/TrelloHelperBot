@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        '/tg_bot_input'
+        '/webhook',
+        '/trello_callback'
     ];
 }
