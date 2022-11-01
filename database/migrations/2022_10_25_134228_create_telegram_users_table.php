@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('telegram_users', function (Blueprint $table) {
-            $table->id();
-            $table->integer('telegram_id')->unique();
+        Schema::create('telegram_users', function (Blueprint $table){
+            $table->integer('id')->unique();
             $table->boolean('is_bot');
             $table->string('first_name');
             $table->string('last_name')->nullable();

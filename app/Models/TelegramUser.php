@@ -9,9 +9,9 @@ class TelegramUser extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['telegram_id', 'is_bot', 'first_name', 'last_name', 'username', 'language_code'];
+    protected $fillable = ['id', 'is_bot', 'first_name', 'last_name', 'username', 'language_code'];
 
-    protected $primaryKey = 'telegram_id';
+    protected $primaryKey = 'id';
 
     protected $keyType = 'string';
 
