@@ -1,6 +1,6 @@
 <?php
 
-use App\Telegram\Telegram;
+use App\Telegram\TrelloHelperBot;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::any('webhook', [\App\Http\Controllers\WebhookController::class, 'getTelegramUpdate']);
-Route::any('trello_callback', [\App\Http\Controllers\WebhookController::class, 'getTrelloUpdate']);
+Route::any('trello_helper_bot', [\App\Http\Controllers\TrelloHelperBotController::class, 'getTelegramUpdate']);
+Route::any('trello_callback', [\App\Http\Controllers\TrelloApi\WebhookController::class, 'getTrelloUpdate']);

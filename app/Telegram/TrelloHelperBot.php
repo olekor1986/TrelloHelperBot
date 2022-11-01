@@ -4,7 +4,7 @@ namespace App\Telegram;
 
 use Illuminate\Support\Facades\Http;
 
-class Telegram
+class TrelloHelperBot
 {
     protected $api = 'https://api.telegram.org/bot';
 
